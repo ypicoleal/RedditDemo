@@ -2,14 +2,16 @@ package com.example.yamidpico.redditdemo
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import com.example.yamidpico.redditdemo.adapter.HotPostAdapter
 import com.example.yamidpico.redditdemo.manager.PostManager
 import io.reactivex.disposables.CompositeDisposable
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
     var disposable: CompositeDisposable? = null
     private val manager by lazy { PostManager() }
+    private val adapter = HotPostAdapter()
 
     init {
         disposable = CompositeDisposable()
@@ -19,8 +21,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        postList.adapter = adapter
+
         disposable?.add(manager.getHotPost().subscribe {
-            Log.e("tales5", "posts: ${it?.data?.children}")
+            it?.data?.children?.let {posts ->
+                adapter.updatePosts(posts)
+            }
         })
     }
 
