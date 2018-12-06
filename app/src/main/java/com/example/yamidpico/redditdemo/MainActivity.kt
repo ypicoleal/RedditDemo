@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    var disposable: CompositeDisposable? = null
+    private var disposable: CompositeDisposable? = null
     private val manager by lazy { PostManager() }
     private val adapter = HotPostAdapter()
 

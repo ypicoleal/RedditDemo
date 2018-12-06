@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Reddit Demo</string>
+    <string name="share">Share</string>
 </resources>

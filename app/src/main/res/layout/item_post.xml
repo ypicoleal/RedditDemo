@@ -2,20 +2,20 @@
 <android.support.constraint.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:paddingTop="8dp">
 
     <TextView
             android:id="@+id/subredditLink"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="r/MakeNewFriendsHere"
+            tools:text="r/MakeNewFriendsHere"
             android:textColor="#0079d3"
             android:fontFamily="sans-serif"
-    android:layout_marginStart="16dp"
-    app:layout_constraintStart_toStartOf="parent"/>
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
             android:id="@+id/hour"
@@ -28,10 +28,10 @@
             android:fontFamily="sans-serif"/>
 
     <TextView
-
+            android:id="@+id/author"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="• u/charlzz_x"
+            tools:text="• u/charlzz_x"
             app:layout_constraintStart_toEndOf="@id/hour"
             android:layout_marginStart="8dp"
             android:textColor="#a5a4a4"
@@ -41,7 +41,7 @@
             android:id="@+id/postTitle"
             android:layout_width="0px"
             android:layout_height="wrap_content"
-            android:text="What’s a super-useful item one should carry with them at all times, since you never know you could need it?"
+            tools:text="What’s a super-useful item one should carry with them at all times, since you never know you could need it?"
             app:layout_constraintTop_toBottomOf="@id/subredditLink"
             android:textColor="#222"
             android:layout_marginTop="4dp"
@@ -71,7 +71,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
-                android:text="Share"
+                android:text="@string/share"
                 android:textColor="#a5a4a4"
                 android:fontFamily="sans-serif"/>
     </LinearLayout>
@@ -94,9 +94,10 @@
                 android:tint="#a5a4a4"/>
 
         <TextView
+                android:id="@+id/commentsText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="242 comments"
+                tools:text="242 Comments"
                 android:layout_marginStart="4dp"
                 android:textColor="#a5a4a4"
                 android:fontFamily="sans-serif"/>
