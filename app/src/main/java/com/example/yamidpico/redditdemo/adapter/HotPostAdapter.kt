@@ -1,6 +1,7 @@
 package com.example.yamidpico.redditdemo.adapter
 
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,8 +27,10 @@ class HotPostAdapter : RecyclerView.Adapter<HotPostAdapter.ViewHolder>(){
     override fun getItemCount() = posts.size
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        val post = posts[position]["data"] as LinkedTreeMap<String, Any>
+        val post = posts[position]["data"] as? LinkedTreeMap<String, Any> ?: return
         val comments = post["num_comments"] as Double
+
+        Log.e("tales5", "thumb: ${post["thumbnail"]}")
         viewHolder.itemView.apply {
             postTitle.text = post["title"].toString()
             subredditLink.text = post["subreddit_name_prefixed"].toString()
