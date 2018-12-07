@@ -5,14 +5,18 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
 import com.example.yamidpico.redditdemo.R
 import com.google.gson.internal.LinkedTreeMap
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_post.view.*
 
-class HotPostAdapter : RecyclerView.Adapter<HotPostAdapter.ViewHolder>(){
+class HotPostAdapter(private val listener: OnPostClickListener) : RecyclerView.Adapter<HotPostAdapter.ViewHolder>() {
 
     private var posts: List<HashMap<String, Any>> = listOf()
+
+    interface OnPostClickListener {
+        fun onPostClick(post: HashMap<String, Any>)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -43,11 +47,20 @@ class HotPostAdapter : RecyclerView.Adapter<HotPostAdapter.ViewHolder>(){
         val preview = post["thumbnail"].toString()
         if (preview != "self" && preview != "default") {
             viewHolder.itemView.preview.visibility = View.VISIBLE
-            Picasso.get().load(post["thumbnail"].toString()).into(viewHolder.itemView.preview)
+            Glide
+                .with(viewHolder.itemView.preview)
+                .load(post["thumbnail"].toString())
+                .into(viewHolder.itemView.preview)
         } else {
             viewHolder.itemView.preview.visibility = View.GONE
         }
     }
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        init {
+            itemView.setOnClickListener {
+                listener.onPostClick(posts[adapterPosition])
+            }
+        }
+    }
 }

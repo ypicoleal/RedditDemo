@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<android.support.v4.widget.NestedScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -8,5 +8,128 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:showIn="@layout/activity_post"
         tools:context=".PostActivity">
+    <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp">
 
-</android.support.constraint.ConstraintLayout>
+        <TextView
+                android:id="@+id/subredditLink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="r/MakeNewFriendsHere"
+                android:textColor="#0079d3"
+                android:fontFamily="sans-serif"
+                android:layout_marginStart="8dp"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+                android:id="@+id/hour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="• 15h"
+                app:layout_constraintStart_toEndOf="@id/subredditLink"
+                android:layout_marginStart="8dp"
+                android:textColor="@color/gray"
+                android:fontFamily="sans-serif"/>
+
+        <TextView
+                android:id="@+id/postTitle"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                tools:text="What’s a super-useful item one should carry with them at all times, since you never know you could need it?"
+                app:layout_constraintTop_toBottomOf="@id/subredditLink"
+                android:textColor="@color/gray"
+                android:layout_marginTop="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="16dp"
+                style="@style/TextAppearance.AppCompat.Subhead"/>
+
+        <TextView
+                android:id="@+id/author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="• u/charlzz_x"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/postTitle"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="8dp"
+                android:textColor="@color/gray"
+                android:fontFamily="sans-serif"/>
+
+        <ImageView
+                android:id="@+id/mediaImg"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:scaleType="fitStart"
+                android:adjustViewBounds="true"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/author"
+                android:importantForAccessibility="no"/>
+
+        <LinearLayout
+                android:id="@+id/shareButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:padding="4dp"
+                app:layout_constraintTop_toBottomOf="@id/mediaImg"
+                app:layout_constraintStart_toStartOf="@id/postTitle">
+
+            <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/ic_share"
+                    android:layout_gravity="center_vertical"
+                    android:tint="@color/gray"
+                    android:importantForAccessibility="no"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="@string/share"
+                    android:textColor="@color/gray"
+                    android:fontFamily="sans-serif"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/commentButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:padding="4dp"
+                android:layout_marginStart="16dp"
+                app:layout_constraintTop_toBottomOf="@id/mediaImg"
+                app:layout_constraintStart_toEndOf="@id/shareButton">
+
+            <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/ic_comment"
+                    android:layout_gravity="center_vertical"
+                    android:tint="@color/gray"
+                    android:importantForAccessibility="no"/>
+
+            <TextView
+                    android:id="@+id/commentsText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="242 Comments"
+                    android:layout_marginStart="4dp"
+                    android:textColor="@color/gray"
+                    android:fontFamily="sans-serif"/>
+        </LinearLayout>
+
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/light_gray"
+                app:layout_constraintTop_toBottomOf="@id/shareButton"
+                android:layout_marginTop="4dp"/>
+    </android.support.constraint.ConstraintLayout>
+</android.support.v4.widget.NestedScrollView>
