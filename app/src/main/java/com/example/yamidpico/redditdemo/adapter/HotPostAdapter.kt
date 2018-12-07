@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.yamidpico.redditdemo.R
 import com.google.gson.internal.LinkedTreeMap
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_post.view.*
 
 class HotPostAdapter : RecyclerView.Adapter<HotPostAdapter.ViewHolder>(){
@@ -36,6 +37,15 @@ class HotPostAdapter : RecyclerView.Adapter<HotPostAdapter.ViewHolder>(){
             subredditLink.text = post["subreddit_name_prefixed"].toString()
             author.text = "u/${post["author"]}"
             commentsText.text = "${comments.toInt()} Comments"
+
+        }
+
+        val preview = post["thumbnail"].toString()
+        if (preview != "self" && preview != "default") {
+            viewHolder.itemView.preview.visibility = View.VISIBLE
+            Picasso.get().load(post["thumbnail"].toString()).into(viewHolder.itemView.preview)
+        } else {
+            viewHolder.itemView.preview.visibility = View.GONE
         }
     }
 
