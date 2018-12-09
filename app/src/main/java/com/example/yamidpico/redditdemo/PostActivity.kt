@@ -32,8 +32,6 @@ class PostActivity : AppCompatActivity() {
         author.text = "u/${data["author"]}"
         commentsText.text = "${comments.toInt()} Comments"
 
-        Log.e("tales5", "${data["url"]}")
-        Log.e("tales5", "${data["post_hint"]}")
         //TODO: agregar otros tipos de media
         when (data["post_hint"]) {
             "image" -> {
