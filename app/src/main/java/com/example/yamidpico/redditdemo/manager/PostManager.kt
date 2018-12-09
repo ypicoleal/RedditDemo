@@ -6,7 +6,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -28,7 +27,6 @@ class PostManager {
             .addInterceptor(logging)
             .connectTimeout(CONNECTION_TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
             .readTimeout(READ_TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
-            //.addInterceptor(requestInterceptor)
             .build()
 
         Retrofit.Builder()
